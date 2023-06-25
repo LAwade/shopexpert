@@ -15,7 +15,7 @@ define('CONF_DEFAULT_PERMISSION', 3);
  */
 define('CONF_URL_SITE', "127.0.0.1:8080/");
 define('CONF_URL_BASE', "http://localhost:8080/");
-define('CONF_URL_URI', substr($_SERVER['REQUEST_URI'], 1));
+//define('CONF_URL_URI', substr($_SERVER['REQUEST_URI'], 1));
 define('CONF_URL_INDEX', 'panel/index');
 
 /*
@@ -29,7 +29,7 @@ define('CONF_SESSION_DESCONNECT', 'desconnect');
  * PROJECT
  */
 define('CONF_PROJECT_PATH_NAME', "Rain");
-define('CONF_LOCAL_PROJECT', '/var/www/html/'. CONF_PROJECT_PATH_NAME);
+define('CONF_LOCAL_PROJECT', '/var/www/html/' . CONF_PROJECT_PATH_NAME);
 define('CONF_NAMESPACE_DEFAULT', 'app\\controllers\\');
 define('CONF_NAME_CONTROLLER_DEFAULT', 'Controller');
 define('CONF_FILE_DEFAULT', 'index.php');
@@ -75,7 +75,7 @@ define('CONF_MAIN_LOGO', CONF_URL_BASE . 'public/img/main/logo/logo_login.png');
 define('CONF_NAV_LOGO', CONF_URL_BASE . 'public/img/main/logo/logo_header.png');
 define('CONF_LOGO_MAIL_HEADER', CONF_URL_BASE . 'public/img/mail/mail_header.png');
 define('CONF_LOGO_MAIL_FOOTER', CONF_URL_BASE . 'public/img/mail/mail_footer.png');
-define('CONF_PROFILE_IMG', CONF_URL_BASE. 'public/img/perfil/I_love_game.png');
+define('CONF_PROFILE_IMG', CONF_URL_BASE . 'public/img/perfil/I_love_game.png');
 
 /**
  * DATE
@@ -109,10 +109,10 @@ define('CONF_MAILING_TEMP_RECUPERAR', __DIR__ . '/../public/mailing/recoveraccou
  */
 define('CONF_DB_DRIVER', 'pgsql');
 define('CONF_DB_HOST', '127.0.0.1');
-define('CONF_DB_PORT', '5432');
-define('CONF_DB_BASE', 'rain');
-define('CONF_DB_USER', 'user');
-define('CONF_DB_PASSWD', 'password');
+define('CONF_DB_PORT', '5434');
+define('CONF_DB_BASE', 'postgres');
+define('CONF_DB_USER', 'postgres');
+define('CONF_DB_PASSWD', 'postgres');
 define('CONF_DB_OPTIONS', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,

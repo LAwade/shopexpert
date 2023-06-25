@@ -2,53 +2,35 @@
 
 namespace app\models;
 
-use Exception;
-use app\core\Model;
-use app\interface\IModel;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Model;
 
-class Permission extends Model implements IModel{
+class Permission extends Model
+{
+    protected $table = "permissions";
 
-    final public const TABLE = "permissions";
-
-    public function __construct(
-        string $name,   
-        int $value,
-        ?int $active
-    )
+    public function findByName($name)
     {
-        try{
-            $this->setName($name);
-            $this->setValue($value);
-            $this->setActive($active);
-            $this->callback("Your action is Success!");
-        } catch(Exception $ex){
-            $this->callback($ex->getMessage());
-        }
+        return Permission::where('name', $name)->get();
     }
 
-    function toArray(): array{
-        return filter_data($this);
+    public function findPermissionByUser($id)
+    {
+        $pages = Permission::join('permissions_users', 'permissions.id', '=', 'permissions_users.fk_permission')
+            ->join('users', 'users.id', '=', 'permissions_users.fk_user')
+            ->select('users.name', 'users.value')
+            ->where('users.id', $id)
+            ->where('permissions', 1)
+            ->first();
+        return $pages;
     }
 
-    private function setName($name){
-        if (strlen($name) < 5 || strlen($name) > 150) {
-            throw new Exception("Name must contain 5 to 150 caracteres. Has: " . strlen($name));
-        }
-        $this->name = mb_strtoupper($name);
-    }
-
-    private function setValue($value){
-        if ($value < 1 || $value > 100) {
-            throw new Exception("Minimum allowance value must be 1 and the maximum 100.");
-        }
-        $this->value = $value;
-    }
-
-    private function setActive($active){
-        if(!$active){
-            $this->active = 0;
-        } else {
-            $this->active = 1;
-        }
+    public function findPermissionUserPage($id, $path)
+    {
+        $perm = Permission::select('value')->find($id);
+        return Permission::join('pages', 'pages.fk_permission', '=', 'permission.id')
+            ->where('path', $path)
+            ->where('value', '<=',  $perm)
+            ->first();
     }
 }
