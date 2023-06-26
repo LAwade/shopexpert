@@ -106,12 +106,12 @@
                                     <td><?= $value->access ?></td>
                                     <td><?= $value->active ? "<i class='fas fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>" ?></td>
                                     <td> 
-                                        <a href="<?= CONF_URL_BASE . "admin/page/edit/{$value->id}" ?>" class="btn btn-success btn-icon-split">
+                                        <a href="<?= CONF_URL_BASE . "/admin/page/edit/{$value->id}" ?>" class="btn btn-success btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-pen"></i>
                                             </span>
                                         </a>
-                                        <a href="<?= CONF_URL_BASE . "admin/page/delete/{$value->id}" ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="<?= CONF_URL_BASE . "/admin/page/delete/{$value->id}" ?>" class="btn btn-danger btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

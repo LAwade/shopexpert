@@ -8,7 +8,7 @@ class Page extends Model
 {
     protected $table = "pages";
 
-    public function findAllConfig()
+    static function findAllConfig()
     {
         $pages = Page::join('permissions', 'permissions.id', '=', 'pages.fk_permission')
             ->join('menus', 'menus.id', '=', 'pages.fk_menu')

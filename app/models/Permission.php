@@ -2,30 +2,29 @@
 
 namespace app\models;
 
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
     protected $table = "permissions";
 
-    public function findByName($name)
+    static function findByName($name)
     {
         return Permission::where('name', $name)->get();
     }
 
-    public function findPermissionByUser($id)
+    static function findPermissionByUser($id)
     {
         $pages = Permission::join('permissions_users', 'permissions.id', '=', 'permissions_users.fk_permission')
             ->join('users', 'users.id', '=', 'permissions_users.fk_user')
-            ->select('users.name', 'users.value')
+            ->select('users.name', 'permissions.value', 'permissions.id')
             ->where('users.id', $id)
-            ->where('permissions', 1)
+            ->where('permissions.active', 1)
             ->first();
         return $pages;
     }
 
-    public function findPermissionUserPage($id, $path)
+    static function findPermissionUserPage($id, $path)
     {
         $perm = Permission::select('value')->find($id);
         return Permission::join('pages', 'pages.fk_permission', '=', 'permission.id')

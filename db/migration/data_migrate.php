@@ -4,6 +4,7 @@ require __DIR__ . '/../../config/includes.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+Capsule::schema()->dropIfExists('companies');
 Capsule::schema()->create('companies', function ($table) {
     $table->increments('id');
     $table->string('name', 250);
@@ -13,16 +14,18 @@ Capsule::schema()->create('companies', function ($table) {
     $table->timestamps();
 });
 
+Capsule::schema()->dropIfExists('users');
 Capsule::schema()->create('users', function ($table) {
     $table->increments('id');
     $table->string('name', 250);
     $table->string('email', 250);
     $table->string('password', 250);
     $table->integer('active')->default(1);
-    $table->timestamps('last_access');
+    $table->timestamp('last_access');
     $table->timestamps();
 });
 
+Capsule::schema()->dropIfExists('menus');
 Capsule::schema()->create('menus', function ($table) {
     $table->increments('id');
     $table->string('name', 50);
@@ -32,6 +35,7 @@ Capsule::schema()->create('menus', function ($table) {
     $table->timestamps();
 });
 
+Capsule::schema()->dropIfExists('pages');
 Capsule::schema()->create('pages', function ($table) {
     $table->increments('id');
     $table->string('name', 250);
@@ -42,14 +46,17 @@ Capsule::schema()->create('pages', function ($table) {
     $table->timestamps();
 });
 
+Capsule::schema()->dropIfExists('permissions');
 Capsule::schema()->create('permissions', function ($table) {
     $table->increments('id');
     $table->string('name', 250);
     $table->integer('value');
+    $table->integer('is_default')->default(0);
     $table->integer('active')->default(1);
     $table->timestamps();
 });
 
+Capsule::schema()->dropIfExists('permissions_users');
 Capsule::schema()->create('permissions_users', function ($table) {
     $table->increments('id');
     $table->integer('fk_permission');

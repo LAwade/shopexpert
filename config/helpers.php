@@ -115,7 +115,7 @@ function str_camel_case(string $string): string {
 }
 
 function url(string $path): string {
-    return CONF_URL_BASE . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    return CONF_URL_BASE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
 
 function redirect(string $url = "") {

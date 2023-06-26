@@ -68,31 +68,16 @@ REFERENCES permissions(id) ON DELETE CASCADE;
 --       ##########################       ---
 
 -- PASSWORD HASH ADMIN = "123456"
-INSERT INTO clients (name, email, password, status, updated_at) VALUES ('admin', 'admin@admin.com', '$2y$10$d/jodesdEdVAmbwgrH.GA.O1FaB47mAwCiI1IGmW.q2xcnc5G1foy', 1, 'now');
+INSERT INTO users (name, email, password, active, last_access) VALUES ('admin', 'admin@admin.com', '$2y$10$d/jodesdEdVAmbwgrH.GA.O1FaB47mAwCiI1IGmW.q2xcnc5G1foy',1, now());
 
-INSERT INTO roles (name, updated_at) VALUES ('ADMINISTRADOR', 'now');
-INSERT INTO roles (name, updated_at) VALUES ('MODERADOR', 'now');
-INSERT INTO roles (name, updated_at) VALUES ('MEMBRO', 'now');
+INSERT INTO permissions (name,value,is_default,active) VALUES ('ADMINISTRATOR', 100 , 1, 0);
+INSERT INTO permissions (name,value,is_default,active) VALUES ('MANAGER', 50 , 1, 0);
+INSERT INTO permissions (name,value,is_default,active) VALUES ('USER', 10 , 1, 1);
 
-INSERT INTO roles_client (id_client, id_role, updated_at) VALUES (1,1, 'now');
+INSERT INTO permissions_users (fk_permission, fk_user) VALUES (1,1);
 
-INSERT INTO priorities (name, color, updated_at) VALUES ('BAIXA', '#26E600', 'now');
-INSERT INTO priorities (name, color, updated_at) VALUES ('MEDIA', '#FFB600', 'now');
-INSERT INTO priorities (name, color, updated_at) VALUES ('ALTA', '#FF0000', 'now');
-INSERT INTO priorities (name, color, updated_at) VALUES ('URGENTE', '#000000', 'now');
+INSERT INTO menus (name, icon, position, active) VALUES ('Administrator','fas fa-cogs', 1, 1);
 
-INSERT INTO status (name, color, updated_at) VALUES ('ABERTO', '#FFDC00', 'now');
-INSERT INTO status (name, color, updated_at) VALUES ('EM ATENDIMENTO', '#00A2FF', 'now');
-INSERT INTO status (name, color, updated_at) VALUES ('AGUARDANDO', '#BBBBBB', 'now');
-INSERT INTO status (name, color, updated_at) VALUES ('FINALIZADO', '#26E600', 'now');
-
-INSERT INTO permissions (name,value,active,updated_at) VALUES ('ADMINISTRATOR', 100 , 1, 'now');
-INSERT INTO permissions (name,value,active,updated_at) VALUES ('MANAGER', 50 , 1, 'now');
-INSERT INTO permissions (name,value,active,updated_at) VALUES ('USER', 10 , 1, 'now');
-
-INSERT INTO permissions_client (id_permission, id_client, updated_at) VALUES (1,1, 'now');
-
-INSERT INTO menus (name, icon, position, active, updated_at) VALUES ('Administrator','fas fa-cogs', 1, 1,'now');
-
-INSERT INTO pages (path, name, id_menu, access_id_permission, active, updated_at) VALUES ('admin/menu','Menus', 1, 1, 1,'now');
-INSERT INTO pages (path, name, id_menu, access_id_permission, active, updated_at) VALUES ('admin/page','Pages', 1, 1, 1,'now');
+INSERT INTO pages (path, name, fk_menu, fk_permission, active) VALUES ('admin/menu','Menus', 1, 1, 1);
+INSERT INTO pages (path, name, fk_menu, fk_permission, active) VALUES ('admin/page','Pages', 1, 1, 1);
+INSERT INTO pages (path, name, fk_menu, fk_permission, active) VALUES ('admin/user','Users', 1, 1, 1);

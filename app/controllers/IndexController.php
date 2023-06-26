@@ -5,24 +5,15 @@ namespace app\controllers;
 use app\models\User;
 use app\core\Controller;
 use app\core\SimplesMail;
+use app\models\Menu;
+use app\models\Permission;
 use app\models\PermissionUser;
-use app\repository\MenuRepository;
-use app\repository\PermissionRepository;
-use app\repository\PermissionUserRepository;
-use app\repository\UserRepository;
 
 class IndexController extends Controller {
 
-    private $user;
     private $simplesMail;
-    private $menu;
-    private $permission;
 
     function __construct() {
-        $this->user = new UserRepository();
-        $this->menu = new MenuRepository();
-        $this->permission = new PermissionRepository();
-        $this->permission_user = new PermissionUserRepository();
         $this->simplesMail = new SimplesMail(CONF_MAIL_USER, CONF_MAIL_PASSWD);
     }
 
@@ -30,13 +21,14 @@ class IndexController extends Controller {
         $data = is_postback();
 
         if ($data['password'] && $data['email']) {
-            $user = $this->user->findByMail($data['email']);
+            $user = User::findByMail($data['email']);
+
             if (!$user->active && $user->email) {
                 $this->message()->info("Perform account authentication, check your e-mail to validate!");
             } else {
                 if (password_verify($data['password'], $user->password)) {
                     session()->set(CONF_SESSION_LOGIN, $user);
-                    session()->set(CONF_SESSION_MENU, $this->menu->findStruture($this->permission->findPermissionByUser($user->id)->value));
+                    session()->set(CONF_SESSION_MENU, Menu::findStruture(Permission::findPermissionByUser($user->id)->value));
                     $this->message()->success("Login success!");
                 } else {
                     $this->message()->warning("E-mail or Password invalid!");

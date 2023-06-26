@@ -8,8 +8,8 @@ class User extends Model
 {
     protected $table = "users";
 
-    public function findByMail($email)
+    static function findByMail($email)
     {
-        return User::where('email', $email)->get();
+        return User::where('email', $email)->first();
     }
 }

@@ -6,63 +6,120 @@ use app\core\Controller;
 use app\models\Menu;
 use app\models\Page;
 use app\models\Permission;
-use app\repository\MenuRepository;
-use app\repository\PageRepository;
-use app\repository\PermissionRepository;
-use app\repository\UserRepository;
+use app\models\User;
 
 class AdminController extends Controller {
-
-    private $user;
-    private $page;
-    private $menu;
-    private $permission;
 
     function __construct() {
         if (!session()->data(CONF_SESSION_LOGIN)) {
             redirect('login');
         }
-        $this->user = new UserRepository();
-        $this->menu = new MenuRepository();
-        $this->page = new PageRepository();
-        $this->permission = new PermissionRepository();
-
     }
 
     public function index() {
-
+        $this->load('home/index');
+        $this->view('template');
     }
     
-    public function menu($action = null, $id = null) {
+    public function user($action = null, $id = null){
         $input = is_postback();
 
-        if (isset($input['exec'])) {
-            $menu = new Menu(
-                $input['name_menu'],
-                $input['icon_menu'],
-                $input['position_menu'],
-                $input['active_menu'] ?? 0
-            );
+        if($id){
+            $user = User::find($id);
+            $info['users'] = $user;
+        } else {
+            $user = new User();
+        }
 
-            $res = $this->menu->create($menu, $id);
-            if ($res && $action != 'delete') {
-                $this->message()->success($menu->callback())->flash();
+        if($input){
+            $user->name = $input['name'];
+            if($input['password']){
+                $user->password = password_hash($input['password'], PASSWORD_DEFAULT);
+            }
+            $user->email = $input['email'];
+            $user->active = $input['active'];
+
+            if($user->save()){
+                $this->message()->success('CREATED SUCCESS')->flash();
             } else {
-                $this->message()->danger($menu->callback())->flash();
+                $this->message()->danger('DELETED ERROR')->flash();
             }
         }
 
-        if ($action == 'delete' && $this->menu->delete($id)) {
+        if ($action == 'delete' && $id) {
+            $user->active = 0;
+            $user->save();
             $this->message()->danger("The item was successfully removed!")->flash();
         }
 
-        if ($action == 'edit' && $id && !$input) {
-            unset($action);
-            $info['menu'] = $this->menu->find($id);
+        $info['all'] = User::all();
+        $info['permissions'] = Permission::all();
+        $info['permission_user'] = Permission::findPermissionByUser($id);
+
+        $this->load('admin/user', $action);
+        $this->view('template', $info);
+    }
+
+    public function permission($action = null, $id = null){
+        $input = is_postback();
+
+        if($id){
+            $permission = Permission::find($id);
+            $info['permission'] = $permission;
+        } else {
+            $permission = new Permission();
         }
 
-        $info['all'] = $this->menu->findAll();
+        if($input){
+            $permission->name = $input['name'];
+            $permission->value = $input['value'];
+            $permission->is_default = $input['is_default'];
+            $permission->active = $input['active'];
+            if ($permission->save()) {
+                $this->message()->success('CREATED SUCCESS')->flash();
+            } else {
+                $this->message()->danger('DELETED ERROR')->flash();
+            }
+        }
+        
+        if ($action == 'delete' && $permission) {
+            $permission->delete();
+            $this->message()->danger("The item was successfully removed!")->flash();
+        }
 
+        $info['permissions'] = Permission::all();
+        $this->load('admin/permission', $action);
+        $this->view('template', $info);
+    }
+
+    public function menu($action = null, $id = null) {
+        $input = is_postback();
+
+        if($id){
+            $menu = Menu::find($id);
+            $info['menus'] = $menu;
+        } else {
+            $menu = new Menu();
+        }
+
+        if ($input) {
+            $menu->name = $input['name_menu'];
+            $menu->icon = $input['icon_menu'];
+            $menu->position = $input['position_menu'];
+            $menu->active = $input['active_menu'] ?? 0;
+            if ($menu->save()) {
+                $this->message()->success('CREATED SUCCESS')->flash();
+            } else {
+                $this->message()->danger('DELETED ERROR')->flash();
+            }
+        }
+
+        if ($action == 'delete' && $id) {
+            $menu->delete();
+            $this->message()->danger("The item was successfully removed!")->flash();
+        }
+
+        $info['all'] = Menu::all();
         $this->load('admin/menu', $action);
         $this->view('template', $info);
     }
@@ -70,38 +127,38 @@ class AdminController extends Controller {
     public function page($action = null, $id = null) {
         $input = is_postback();
 
-        if ($input) {
-            $page = new Page(
-                $input['name_page'],
-                $input['path_page'],
-                $input['id_menu'],
-                $input['access_id_permission'],
-                $input['active_page']
-            );
+        if($id){
+            $page = Page::find($id);
+            $info['pages'] = $page;
+            unset($action);
+        } else {
+            $page = new Page();
+        }
 
-            $res = $this->page->create($page, $id);
-            if($res){
-                $this->message()->success($page->callback())->flash();
+        if ($input) {
+            $page->name = $input['name_page'];
+            $page->path = $input['path_page'];
+            $page->fk_menu = $input['id_menu'];
+            $page->fk_permission = $input['access_id_permission'];
+            $page->active = $input['active_page'];
+
+            if($page->save()){
+                $this->message()->success("Page is saved")->flash();
             } else {
-                $this->message()->danger($page->callback())->flash();
+                $this->message()->danger("Page isn't created!")->flash();
             } 
         }
 
-        if ($action == 'delete' && $this->page->delete($id)) {
+        if ($action == 'delete' && $id) {
+            $page->delete();
             $this->message()->danger("The item was successfully removed!")->flash();
         }
 
-        if ($action == 'edit' && $id && !$input) {
-            unset($action);
-            $info['pages'] = $this->page->find($id);
-        }
-
-        $info['permission'] = $this->permission->findAll();
-        $info['menu'] = $this->menu->findAll();
-        $info['all'] = $this->page->findAllConfig();
+        $info['permission'] = Permission::all();
+        $info['menu'] = Menu::all();
+        $info['all'] = Page::findAllConfig();
 
         $this->load('admin/page', $action);
         $this->view('template', $info);
     }
-    
 }

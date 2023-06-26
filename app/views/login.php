@@ -29,12 +29,12 @@
                                         </form>
                                         <?= $this->message()->render(); ?>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>index/forgotpassword">Forgot Password?</a>
+                                            <a class="small" href="<?= CONF_URL_BASE ?>/index/forgotpassword">Forgot Password?</a>
                                         </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="<?= CONF_URL_BASE ?>index/createaccount">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="<?= CONF_URL_BASE ?>/index/createaccount">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>

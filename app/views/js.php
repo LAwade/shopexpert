@@ -7,7 +7,7 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 
-<script src="<?= CONF_URL_BASE ?>public/dist/js/scripts.js"></script>
-<script src="<?= CONF_URL_BASE ?>public/dist/assets/demo/chart-area-demo.js"></script>
-<script src="<?= CONF_URL_BASE ?>public/dist/assets/demo/chart-bar-demo.js"></script>
-<script src="<?= CONF_URL_BASE ?>public/dist/assets/demo/datatables-demo.js"></script>
+<script src="<?= CONF_URL_BASE ?>/public/dist/js/scripts.js"></script>
+<script src="<?= CONF_URL_BASE ?>/public/dist/assets/demo/chart-area-demo.js"></script>
+<script src="<?= CONF_URL_BASE ?>/public/dist/assets/demo/chart-bar-demo.js"></script>
+<script src="<?= CONF_URL_BASE ?>/public/dist/assets/demo/datatables-demo.js"></script>

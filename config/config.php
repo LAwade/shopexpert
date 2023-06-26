@@ -13,8 +13,8 @@ define('CONF_DEFAULT_PERMISSION', 3);
  * URL
  * Info: add slash the final URL in (CONF_URL_SITE, CONF_URL_BASE)
  */
-define('CONF_URL_SITE', "127.0.0.1:8080/");
-define('CONF_URL_BASE', "http://localhost:8080/");
+define('CONF_URL_SITE', "127.0.0.1");
+define('CONF_URL_BASE', "http://localhost");
 //define('CONF_URL_URI', substr($_SERVER['REQUEST_URI'], 1));
 define('CONF_URL_INDEX', 'panel/index');
 
@@ -71,11 +71,11 @@ define('CONF_RETURN_AJAX_FAIL', 'FAIL;');
 /*
  * LOGOS
  */
-define('CONF_MAIN_LOGO', CONF_URL_BASE . 'public/img/main/logo/logo_login.png');
-define('CONF_NAV_LOGO', CONF_URL_BASE . 'public/img/main/logo/logo_header.png');
-define('CONF_LOGO_MAIL_HEADER', CONF_URL_BASE . 'public/img/mail/mail_header.png');
-define('CONF_LOGO_MAIL_FOOTER', CONF_URL_BASE . 'public/img/mail/mail_footer.png');
-define('CONF_PROFILE_IMG', CONF_URL_BASE . 'public/img/perfil/I_love_game.png');
+define('CONF_MAIN_LOGO', CONF_URL_BASE . '/public/img/main/logo/logo_login.png');
+define('CONF_NAV_LOGO', CONF_URL_BASE . '/public/img/main/logo/logo_header.png');
+define('CONF_LOGO_MAIL_HEADER', CONF_URL_BASE . '/public/img/mail/mail_header.png');
+define('CONF_LOGO_MAIL_FOOTER', CONF_URL_BASE . '/public/img/mail/mail_footer.png');
+define('CONF_PROFILE_IMG', CONF_URL_BASE . '/public/img/perfil/I_love_game.png');
 
 /**
  * DATE

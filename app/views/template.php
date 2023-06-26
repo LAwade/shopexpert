@@ -5,7 +5,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="<?= CONF_URL_BASE ?>"><?= CONF_NAME_SYSTEM ?></a>
+            <a class="navbar-brand" href="<?= CONF_URL_BASE ?>/"><?= CONF_NAME_SYSTEM ?></a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <div class="input-group">
@@ -16,9 +16,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="<?= CONF_URL_BASE . 'home/changepassword' ?>">Change Password</a>
+                        <a class="dropdown-item" href="<?= CONF_URL_BASE . '/home/changepassword' ?>">Change Password</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?= CONF_URL_BASE . 'index/logoff' ?>">Logout</a>
+                        <a class="dropdown-item" href="<?= CONF_URL_BASE . '/index/logoff' ?>">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -30,7 +30,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Main</div>
-                            <a class="nav-link" href="<?= CONF_URL_BASE . 'home/index' ?>">
+                            <a class="nav-link" href="<?= CONF_URL_BASE . '/home/index' ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -45,10 +45,11 @@
                                         if ($value->name != $menu) {
                                             $name_menu = str_replace(" ", "", $value->name);
                                             $menus .= ($x > 1 ? "</nav></div>" : '');
+                                            $menu_heading = $value->menu_heading;
                                             
-                                            if ($value->menu_heading != $heading) {
-                                                $menus .= "<div class=\"sb-sidenav-menu-heading\">{$value->menu_heading}</div>";
-                                                $heading = $value->menu_heading;
+                                            if ($menu_heading != $heading) {
+                                                $menus .= "<div class=\"sb-sidenav-menu-heading\">{$menu_heading}</div>";
+                                                $heading = $menu_heading;
                                             }
                                             
                                             $menus .= "<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapse{$name_menu}\" aria-expanded=\"false\" aria-controls=\"collapse{$name_menu}\">
@@ -65,7 +66,7 @@
                                             $menu = $value->name;
                                         }
 
-                                        $menus .= "<a class=\"nav-link\" href=" . CONF_URL_BASE . $value->path . ">{$value->name_page}</a>";
+                                        $menus .= "<a class=\"nav-link\" href=" . CONF_URL_BASE . "/" . $value->path . ">{$value->name_page}</a>";
                                     }
                                     echo $menus . "</nav></div>";
                                 }
@@ -89,8 +90,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; <?= date('Y') ?>  - <?= CONF_NAME_SYSTEM ?> <img src="<?= CONF_URL_BASE ?>public/img/main/more/br.png"> | Developer <a href="https://github.com/LAwade">Lucas Awade </a> | Version: <?= CONF_VERSION_CURRENT ?></div> 
-                            
+                            <div class="text-muted">Copyright &copy; <?= date('Y') ?>  - <?= CONF_NAME_SYSTEM ?> <img src="<?= CONF_URL_BASE ?>/public/img/main/more/br.png"> | Developer <a href="https://github.com/LAwade">Lucas Awade </a> | Version: <?= CONF_VERSION_CURRENT ?></div> 
                         </div>
                     </div>
                 </footer>
