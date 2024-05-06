@@ -14,10 +14,10 @@
                 <div class="card-body">
                     <form class="user" method="POST">
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" minlength="5" maxlength="20" aria-describedby="nova_senha" placeholder="New Password">
+                            <input type="password" name="password" class="form-control" minlength="5" maxlength="20" aria-describedby="nova_senha" placeholder="New Password" require>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="repassword" class="form-control" minlength="5" maxlength="20" aria-describedby="conf_senha" placeholder="Confirm Password">
+                            <input type="password" name="repassword" class="form-control" minlength="5" maxlength="20" aria-describedby="conf_senha" placeholder="Confirm Password" require>
                         </div>
                         <input type="submit" name="exec" value="Change" class="btn btn-primary btn-user btn-block"/>
                     </form>

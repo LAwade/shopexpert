@@ -86,6 +86,13 @@ function is_base64($s) {
     return (bool) preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s);
 }
 
+function hash_password(string $password): string|bool {
+    if(strlen($password) >= 5){
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+    return false;
+}
+
 // *****************************************************************************
 // *                          STRING MANIPULATION                              *
 // *****************************************************************************

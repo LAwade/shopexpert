@@ -19,7 +19,7 @@ abstract class Controller {
 
     protected function load($view, $action = null) {
         $this->view = $view;
-        if ($action) {
+        if ($action && $action != 'edit') {
             redirect($this->view);
         }
     }

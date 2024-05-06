@@ -22,19 +22,19 @@
                                                 <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="senha">Password:</label>
+                                                <label for="senha">Senha:</label>
                                                 <input type="password" name="password" class="form-control" id="senha" placeholder="Password" required>
                                             </div>
                                             <input type="submit" class="btn btn-primary btn-block" value="Login"/>
                                         </form>
                                         <?= $this->message()->render(); ?>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>/index/forgotpassword">Forgot Password?</a>
+                                            <a class="small" href="<?= CONF_URL_BASE ?>/index/forgotpassword"><i class="fas fa-lock"></i> Recuperar Senha</a>
                                         </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="<?= CONF_URL_BASE ?>/index/createaccount">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="<?= CONF_URL_BASE ?>/index/createaccount">Criar Conta, Cadastre-se!</a></div>
                                     </div>
                                 </div>
                             </div>

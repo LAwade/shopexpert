@@ -21,21 +21,21 @@
                                     <div class="p-5">
                                         <form class="user" method="POST">
                                             <div class="form-group">
-                                                <div class="small mb-3 text-muted">Validation is done at the same source as the password recovery request.</div>
+                                                <div class="small mb-3 text-muted">Informe os dados iniciais para a recuperação de senha.</div>
                                             </div>
                                             <div class="form-group">
                                                 <label>E-mail:</label>
-                                                <input type="email" name="mail_client" class="form-control" id="email" aria-describedby="email" placeholder="Your account e-mail">
+                                                <input type="email" name="mail" class="form-control" id="email" aria-describedby="email" placeholder="Your account e-mail">
                                             </div>
-                                            <input type="submit" class="btn btn-primary btn-block" value="Send by E-mail">
+                                            <input type="submit" class="btn btn-primary btn-block" value="Enviar por E-mail">
                                         </form>
                                         <?= $this->message()->render(); ?>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>index/createaccount">Create Account!</a>
+                                            <a class="small" href="<?= CONF_URL_BASE ?>/index/createaccount">Criar uma conta</a>
                                         </div>
                                         <div class="text-center">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>index">Login!</a>
+                                            <a class="small" href="<?= CONF_URL_BASE ?>">Login!</a>
                                         </div>
                                     </div>
                                 </div>

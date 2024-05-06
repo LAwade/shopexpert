@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PermissionUser extends Model
 {
-    protected $table = "permissions_client";
+    protected $table = "permissions_users";
 }

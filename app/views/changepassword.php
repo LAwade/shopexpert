@@ -32,7 +32,7 @@
                                         <?= $this->message()->render(); ?>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>index">Login!</a>
+                                            <a class="small" href="<?= CONF_URL_BASE ?>/index">Login!</a>
                                         </div>
                                     </div>
                                 </div>

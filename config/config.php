@@ -14,7 +14,7 @@ define('CONF_DEFAULT_PERMISSION', 3);
  * Info: add slash the final URL in (CONF_URL_SITE, CONF_URL_BASE)
  */
 define('CONF_URL_SITE', "127.0.0.1");
-define('CONF_URL_BASE', "http://localhost");
+define('CONF_URL_BASE', "http://192.168.18.7/rain");
 //define('CONF_URL_URI', substr($_SERVER['REQUEST_URI'], 1));
 define('CONF_URL_INDEX', 'panel/index');
 
@@ -88,10 +88,10 @@ define('CONF_DATE_HOUR_APP', 'Y-m-d H:i:s');
 /*
  * MAIL
  */
-define('CONF_MAIL_HOST', '');
-define('CONF_MAIL_PORT', '');
-define('CONF_MAIL_USER', '');
-define('CONF_MAIL_PASSWD', '');
+define('CONF_MAIL_HOST', 'smtp.gmail.com');
+define('CONF_MAIL_PORT', '587');
+define('CONF_MAIL_USER', 'suportelendariostm@gmail.com');
+define('CONF_MAIL_PASSWD', 'blackfly195');
 define('CONF_MAIL_OPTION_CHARSET', 'UTF8');
 define('CONF_MAIL_OPTION_AUTH', 'true');
 define('CONF_MAIL_OPTION_SECURE', 'tls');
@@ -109,7 +109,7 @@ define('CONF_MAILING_TEMP_RECUPERAR', __DIR__ . '/../public/mailing/recoveraccou
  */
 define('CONF_DB_DRIVER', 'pgsql');
 define('CONF_DB_HOST', '127.0.0.1');
-define('CONF_DB_PORT', '5434');
+define('CONF_DB_PORT', '5432');
 define('CONF_DB_BASE', 'postgres');
 define('CONF_DB_USER', 'postgres');
 define('CONF_DB_PASSWD', 'postgres');

@@ -56,6 +56,18 @@ class Message {
         return $this;
     }
 
+    function list_danger(string $head, array $message): Message{
+        $this->icon = "<i class=\"fas fa-exclamation-triangle\"></i>";
+        $this->type = CONF_MESSAGE_DANGER;
+        $this->text = $head;
+        $this->text .= "<ul>";
+        foreach($message as $v){
+            $this->text .= "<li>$v</li>";
+        }
+        $this->text .= "</ul>";
+        return $this;
+    }
+
     private function filter(string $message): string {
         return filter_var($message, FILTER_SANITIZE_SPECIAL_CHARS);
     }

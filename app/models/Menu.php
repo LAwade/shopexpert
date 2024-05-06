@@ -11,7 +11,6 @@ class Menu extends Model
 
     static function findStruture($value)
     {
-        
         $menu = Menu::join('pages', 'menus.id', '=', 'pages.fk_menu')
             ->join('permissions', 'permissions.id', '=', 'pages.fk_permission')
             ->selectRaw("menus.name, menus.position, icon, pages.name AS name_page, path, SPLIT_PART(pages.path, '/', 1) AS menu_heading")
@@ -23,6 +22,7 @@ class Menu extends Model
             ->orderBy('pages.name')
             ->orderBy('menus.created_at')
             ->get();
+
         return $menu;
     }
 }

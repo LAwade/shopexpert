@@ -26,7 +26,6 @@ class AdminController extends Controller {
 
         if($id){
             $user = User::find($id);
-            $info['users'] = $user;
         } else {
             $user = new User();
         }
@@ -55,7 +54,7 @@ class AdminController extends Controller {
         $info['all'] = User::all();
         $info['permissions'] = Permission::all();
         $info['permission_user'] = Permission::findPermissionByUser($id);
-
+        $info['users'] = $user;
         $this->load('admin/user', $action);
         $this->view('template', $info);
     }
@@ -96,8 +95,7 @@ class AdminController extends Controller {
         $input = is_postback();
 
         if($id){
-            $menu = Menu::find($id);
-            $info['menus'] = $menu;
+            $menu = Menu::find($id);            
         } else {
             $menu = new Menu();
         }
@@ -119,6 +117,7 @@ class AdminController extends Controller {
             $this->message()->danger("The item was successfully removed!")->flash();
         }
 
+        $info['menu'] = $menu;
         $info['all'] = Menu::all();
         $this->load('admin/menu', $action);
         $this->view('template', $info);
@@ -129,8 +128,6 @@ class AdminController extends Controller {
 
         if($id){
             $page = Page::find($id);
-            $info['pages'] = $page;
-            unset($action);
         } else {
             $page = new Page();
         }
@@ -149,7 +146,7 @@ class AdminController extends Controller {
             } 
         }
 
-        if ($action == 'delete' && $id) {
+        if ($action == 'delete' && $page) {
             $page->delete();
             $this->message()->danger("The item was successfully removed!")->flash();
         }
@@ -157,7 +154,7 @@ class AdminController extends Controller {
         $info['permission'] = Permission::all();
         $info['menu'] = Menu::all();
         $info['all'] = Page::findAllConfig();
-
+        $info['pages'] = $page;
         $this->load('admin/page', $action);
         $this->view('template', $info);
     }

@@ -36,10 +36,10 @@
                             </a>
 
                             <?php
+                                $menu = "";
+                                $heading = "";
+                                $menus = "";
                                 if ((array) session()->data(CONF_SESSION_MENU)) {
-                                    $menu = "";
-                                    $heading = "";
-                                    $menus = "";
                                     foreach (session()->data(CONF_SESSION_MENU) as $value) {
                                         $x++;
                                         if ($value->name != $menu) {
@@ -68,7 +68,10 @@
 
                                         $menus .= "<a class=\"nav-link\" href=" . CONF_URL_BASE . "/" . $value->path . ">{$value->name_page}</a>";
                                     }
-                                    echo $menus . "</nav></div>";
+                                   
+                                    if($menus){
+                                        echo $menus . "</nav></div>";
+                                    }
                                 }
                             ?>
                         </div>

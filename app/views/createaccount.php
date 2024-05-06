@@ -19,33 +19,33 @@
                                     <div class="p-5">
                                         <form class="user" method="POST">
                                             <div class="form-group">
-                                                <label>Full Name:</label>
-                                                <input type="text" minlength="5" maxlength="150" class="form-control form-validate-letter" id="exampleFirstName" name="name" placeholder="Full Name" required>
+                                                <label>Nome Completo:</label>
+                                                <input type="text" minlength="5" value="<?= $name ?>" maxlength="150" class="form-control form-validate-letter" name="name" placeholder="Full Name" require>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>E-mail:</label>
-                                                <input type="email" minlength="3" maxlength="150" class="form-control" id="email" name="mail" placeholder="E-mail" required>
+                                                <input type="email" minlength="3" value="<?= $email ?>" maxlength="150" class="form-control" name="email" placeholder="E-mail" require>
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Password:</label>
-                                                <input type="password" minlength="5" maxlength="20" class="form-control" id="password" name="password" placeholder="Password" required >  
+                                                <label>Senha:</label>
+                                                <input type="password" minlength="5" maxlength="20" class="form-control" name="password" placeholder="Password" require>  
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Confirm Password:</label>
-                                                <input type="password" minlength="5" maxlength="20" class="form-control" id="repassword" name="repassword" placeholder="Confirme Password" required >  
+                                                <label>Confirme Senha:</label>
+                                                <input type="password" minlength="5" maxlength="20" class="form-control" name="repassword" placeholder="Confirme Password" require>  
                                             </div>
-                                            <input type="submit" class="btn btn-primary btn-block" value="Create Now"/>
+                                            <input type="submit" name="exec" class="btn btn-primary btn-block" value="Confirmar"/>
                                         </form>
                                         <?= $this->message()->render(); ?>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>index/forgotpassword">Forgot your password?</a>
+                                            <a class="small" href="<?= CONF_URL_BASE ?>/index/forgotpassword">Perdeu sua senha?</a>
                                         </div>
                                         <div class="text-center">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>index">Login!</a>
+                                            <a class="small" href="<?= CONF_URL_BASE ?>/index/login">Login!</a>
                                         </div>
                                     </div>
                                 </div>
