@@ -4,12 +4,8 @@
         <h3 class="mt-4">Pages</h3>
     </div>
     <hr>
-
-    <!-- Content Row -->
     <div class="row">
-        <!-- Content Column -->
         <div class="col-lg-12 mb-4">
-            <!-- Project Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header">
                     <i class="fas fa-scroll"></i> Create Page
@@ -27,28 +23,6 @@
                             <div class="col-sm-12 mb-3 mb-sm-0">
                                 <h4 class="small font-weight-bold">Name:</h4>
                                 <input type="text" name="name_page" value="<?= $pages->name ?>" class="form-control" id="exampleInputEmail" placeholder="Name Page">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                <h4 class="small font-weight-bold">Menu:</h4>
-                                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="id_menu">
-                                    <?php foreach ($menu as $value) { ?>
-                                        <option value="<?= $value->id ?>" <?= $value->id == $pages->id ? 'selected' : '' ?> ><?= $value->name ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                <h4 class="small font-weight-bold">Access:</h4>
-                                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="access_id_permission">
-                                    <?php foreach ($permission as $value) { ?>
-                                        <option value="<?= $value->id ?>" <?= $value->id == $pages->access_id_permission ? 'selected' : '' ?> ><?= $value->name ?> [<?= $value->value ?>]</option>
-                                    <?php } ?>
-                                </select>
                             </div>
                         </div>
 

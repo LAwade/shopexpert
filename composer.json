@@ -6,7 +6,6 @@
     }
   },
   "require": {
-    "phpmailer/phpmailer": "~6.0",
     "illuminate/events": "^10.13",
     "illuminate/database": "^10.13",
     "vlucas/valitron": "^1.4"

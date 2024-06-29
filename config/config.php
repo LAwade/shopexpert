@@ -3,19 +3,16 @@
 /*
  * PROPRIETS SYSTEM
  */
-define('CONF_NAME_SYSTEM', 'Rain');
-define('CONF_VERSION_CURRENT', '1.0.0 BETA');
+define('CONF_NAME_SYSTEM', 'ShopExpert');
+define('CONF_VERSION_CURRENT', '1.0.0');
 define('CONF_ACCOUNT_ADMINISTRATOR', 'admin');
-define('CONF_VALUE_PERMISSION_MASTER', 100);
-define('CONF_DEFAULT_PERMISSION', 3);
 
 /*
  * URL
  * Info: add slash the final URL in (CONF_URL_SITE, CONF_URL_BASE)
  */
 define('CONF_URL_SITE', "127.0.0.1");
-define('CONF_URL_BASE', "http://192.168.18.7/rain");
-//define('CONF_URL_URI', substr($_SERVER['REQUEST_URI'], 1));
+define('CONF_URL_BASE', "http://127.0.0.1/rain");
 define('CONF_URL_INDEX', 'panel/index');
 
 /*
@@ -28,7 +25,7 @@ define('CONF_SESSION_DESCONNECT', 'desconnect');
 /*
  * PROJECT
  */
-define('CONF_PROJECT_PATH_NAME', "Rain");
+define('CONF_PROJECT_PATH_NAME', "softexpert");
 define('CONF_LOCAL_PROJECT', '/var/www/html/' . CONF_PROJECT_PATH_NAME);
 define('CONF_NAMESPACE_DEFAULT', 'app\\controllers\\');
 define('CONF_NAME_CONTROLLER_DEFAULT', 'Controller');
@@ -90,12 +87,12 @@ define('CONF_DATE_HOUR_APP', 'Y-m-d H:i:s');
  */
 define('CONF_MAIL_HOST', 'smtp.gmail.com');
 define('CONF_MAIL_PORT', '587');
-define('CONF_MAIL_USER', 'suportelendariostm@gmail.com');
-define('CONF_MAIL_PASSWD', 'blackfly195');
+define('CONF_MAIL_USER', 'shopexpert@gmail.com');
+define('CONF_MAIL_PASSWD', '123456');
 define('CONF_MAIL_OPTION_CHARSET', 'UTF8');
 define('CONF_MAIL_OPTION_AUTH', 'true');
 define('CONF_MAIL_OPTION_SECURE', 'tls');
-define('CONF_MAIL_OPTION_TITLE', 'Rain');
+define('CONF_MAIL_OPTION_TITLE', 'ShopExpert');
 define('CONF_MAIL_LOG', 'mailing');
 
 /*
@@ -110,9 +107,9 @@ define('CONF_MAILING_TEMP_RECUPERAR', __DIR__ . '/../public/mailing/recoveraccou
 define('CONF_DB_DRIVER', 'pgsql');
 define('CONF_DB_HOST', '127.0.0.1');
 define('CONF_DB_PORT', '5432');
-define('CONF_DB_BASE', 'postgres');
-define('CONF_DB_USER', 'postgres');
-define('CONF_DB_PASSWD', 'postgres');
+define('CONF_DB_BASE', 'softexpert');
+define('CONF_DB_USER', 'softexpert');
+define('CONF_DB_PASSWD', 'softexpert');
 define('CONF_DB_OPTIONS', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,

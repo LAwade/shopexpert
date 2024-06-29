@@ -4,10 +4,6 @@ namespace app\controllers;
 
 use app\models\User;
 use app\core\Controller;
-use app\core\SimplesMail;
-use app\models\Menu;
-use app\models\Permission;
-use app\models\PermissionUser;
 use Valitron\Validator;
 
 class IndexController extends Controller
@@ -32,7 +28,6 @@ class IndexController extends Controller
             } else {
                 if (password_verify($data['password'], $user->password)) {
                     session()->set(CONF_SESSION_LOGIN, $user);
-                    session()->set(CONF_SESSION_MENU, Menu::findStruture(Permission::findPermissionByUser($user->id)->value));
                     $this->message()->success("Login success!");
                 } else {
                     $this->message()->warning("E-mail or Password invalid!");
@@ -92,18 +87,8 @@ class IndexController extends Controller
         $user->last_access = date(CONF_DATE_HOUR_APP);
 
         if ($user->save()) {
-            $permission_user = new PermissionUser();
-            $permission_user->fk_permission = CONF_DEFAULT_PERMISSION;
-            $permission_user->fk_user = $user->id;
-            $permission_user->active = 1;
-
-            if ($permission_user->save()) {
-                $this->message()->info("Seja bem-vindo a " . CONF_NAME_SYSTEM . "!")->flash();
-                redirect('index/login');
-            } else {
-                $user->delete($user->id);
-                $this->message()->warning($permission_user->callback())->flash();
-            }
+            $this->message()->info("Seja bem-vindo a " . CONF_NAME_SYSTEM . "!")->flash();
+            redirect('index/login');
         } else {
             $this->message()->warning($user->callback())->flash();
         }
