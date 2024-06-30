@@ -6,8 +6,8 @@
     }
   },
   "require": {
-    "illuminate/events": "^10.13",
-    "illuminate/database": "^10.13",
+    "illuminate/events": "^8.0",
+    "illuminate/database": "^8.0",
     "vlucas/valitron": "^1.4"
   }
 }

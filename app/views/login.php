@@ -27,14 +27,7 @@
                                             </div>
                                             <input type="submit" class="btn btn-primary btn-block" value="Login"/>
                                         </form>
-                                        <?= $this->message()->render(); ?>
-                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="<?= CONF_URL_BASE ?>/index/forgotpassword"><i class="fas fa-lock"></i> Recuperar Senha</a>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer text-center">
-                                        <div class="small"><a href="<?= CONF_URL_BASE ?>/index/createaccount">Criar Conta, Cadastre-se!</a></div>
+                                        <?= $this->message()->render(); ?>                                      
                                     </div>
                                 </div>
                             </div>

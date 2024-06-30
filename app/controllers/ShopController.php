@@ -14,9 +14,10 @@ class ShopController extends Controller
         
     }
 
-    public function index($hash = null)
+    public function index()
     {
-        $this->view('login');
+        $this->load('home/index');
+        $this->view('template');
     }
 
     public function show()

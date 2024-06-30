@@ -11,8 +11,8 @@ define('CONF_ACCOUNT_ADMINISTRATOR', 'admin');
  * URL
  * Info: add slash the final URL in (CONF_URL_SITE, CONF_URL_BASE)
  */
-define('CONF_URL_SITE', "127.0.0.1");
-define('CONF_URL_BASE', "http://127.0.0.1/rain");
+define('CONF_URL_SITE', "localhost:8081");
+define('CONF_URL_BASE', "http://localhost:8081");
 define('CONF_URL_INDEX', 'panel/index');
 
 /*
@@ -105,11 +105,11 @@ define('CONF_MAILING_TEMP_RECUPERAR', __DIR__ . '/../public/mailing/recoveraccou
  *  DATA BASE
  */
 define('CONF_DB_DRIVER', 'pgsql');
-define('CONF_DB_HOST', '127.0.0.1');
+define('CONF_DB_HOST', '192.168.18.54');
 define('CONF_DB_PORT', '5432');
-define('CONF_DB_BASE', 'softexpert');
-define('CONF_DB_USER', 'softexpert');
-define('CONF_DB_PASSWD', 'softexpert');
+define('CONF_DB_BASE', 'shopexpert');
+define('CONF_DB_USER', 'shopexpert');
+define('CONF_DB_PASSWD', 'shopexpert');
 define('CONF_DB_OPTIONS', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,

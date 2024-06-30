@@ -1,0 +1,39 @@
+version: '3.7'
+networks:
+  working:
+    driver: bridge
+services:
+  postgres:
+    build: postgres
+    container_name: postgresql
+    restart: always
+    environment:
+      - POSTGRES_USER=shopexpert
+      - POSTGRES_PASSWORD=shopexpert
+      - POSTGRES_DB=shopexpert
+    ports:
+      - 5433:5432
+    networks:
+      - working
+    volumes:
+      - db:/var/lib/postgresql/data
+  aplicativo:
+    build: shopexpert
+    restart: always
+    container_name: shopexpert
+    working_dir: /var/www/html/shopexpert
+    ports:
+      - 8081:80
+    privileged: true
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5433
+    depends_on:
+      - postgres
+    networks:
+      - working
+    links:
+      - postgres
+volumes:
+  storage:
+  db:
