@@ -1,0 +1,34 @@
+ShopExpert
+
+Esse é um simples aplicativo para apresentação de uma plataforma de vendas de produtos, onde você poderá adicionar fácilmente atributos para seu comercio.
+Ele já vem com um sistema de Taxas/Impostos que facilita a criação de impostos sobre produto. Além de que cada imposto ou taxa pode ser incluido em diferentes tipos de produto.
+
+# Instalação
+
+Básica:
+    - Baixe em nosso repositório o pacote com os códigos.
+    - Armazene em um servidor com Apache ou PHP 7.4 instalados.
+    - Caso precise crie uma pasta dentro do projeto com nome storage e dentro logs (storage/logs).
+    - Rode os scripts de banco de dados em seu DB recomendamos o Postgres.
+        >_ psql -d shopexpert -f dump_shopexpert.sql (É necessário possuir um usuário root no seu Banco de dados)
+    - Na pasta do projeto execute >_ php -S 0.0.0.0:8080 -t /var/www/html/shopexpert 
+Docker:
+    >_ docker build -t shopexpert .
+    >_ docker run -it -d --name shopexpert -p 8081:80 shopexpert
+    >_ docker run -it -d --name postgres -p 5432:5432 postgres
+
+    - Configure as informações de acesso ao banco de dados no arquivo config/config.php
+Docker Compose:
+    >_ docker-compose up -d
+
+# Sobre
+
+> Sistema rotas automaticas, não é preciso se preocupar com arquivos de rotas, pois nosso projeto vem com uma CORE de rotas que identifica seu Controller e a função acessada atravez da URL e já redireciona para a determinada função.
+> Validação com Valitron para melhorar os dados a serem armazenados no banco de dados.
+> Sistema de login implementado.
+> Painel Elegante.
+> Icones do FontAwasome.
+> Recuperação de Senhas.
+> Validação de registros de erros em logs.
+
+

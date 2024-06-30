@@ -28,6 +28,10 @@ RUN alias composer='/usr/local/bin/composer'
 WORKDIR /var/www/html
 RUN git clone https://github.com/LAwade/shopexpert.git
 
+WORKDIR /var/www/html/shopexpert
+RUN mkdir storage
+RUN mkdir storage/logs
+
 EXPOSE 80
 
 ENTRYPOINT [ "php" ]
