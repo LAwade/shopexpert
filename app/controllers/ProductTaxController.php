@@ -3,11 +3,9 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\models\Category;
-use app\models\User;
 use Exception;
 
-class AdminController extends Controller
+class ProductTaxController extends Controller
 {
 
     function __construct()
@@ -19,7 +17,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        $this->load('home/index');
+        $this->load('producttax/index');
         $this->view('template');
     }
+
 }

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h3 class="mt-4">Categorias</h3>
+        <h3 class="mt-4">Taxas/Impostos</h3>
     </div>
     <hr>
     <div class="row">
@@ -10,20 +10,27 @@
                     <i class="fas fa-edit"></i> Cadastrar
                 </div>
                 <div class="card-body">
-                    <form class="user" method="POST" action="<?= url("category/save" . (isset($category->id) ? "/$category->id" : "")) ?>">
+                    <form class="user" method="POST" action="<?= url("tax/save" . (isset($tax->id) ? "/$tax->id" : "")) ?>">
                         <div class="form-group row">
                             <div class="col-sm-12 mb-3 mb-sm-0">
                                 <h4 class="small font-weight-bold">Nome:</h4>
-                                <input type="text" name="name" value="<?= $category->name ?? '' ?>" class="form-control" id="name" placeholder="Nome da categoria">
+                                <input type="text" name="name" value="<?= $tax->name ?? '' ?>" class="form-control" id="name" placeholder="Nome do Imposto">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                <h4 class="small font-weight-bold">Status:</h4>
-                                <div class="form-group form-check">
-                                    <input type="checkbox" name="active" value="1" class="form-check-input" id="active" <?= isset($category->active) && $category->active ? 'checked' : ''; ?>>
-                                    <label class="form-check-label" for="exampleCheck1">Ativo</label>
-                                </div>
+                                <h4 class="small font-weight-bold">Valor(Decimal): <i>OBS: Valor aceito de 0.0 até 1.0</i></h4>
+                                <input type="float" name="rate" value="<?= $tax->rate ?? '' ?>" class="form-control" id="rate" placeholder="Valor do Tributo. Exemplo: 0.4 (40%)">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <h4 class="small font-weight-bold">Estado(UF):</h4>
+                                <select name="region" class="form-control" id="region" >
+                                    <?php foreach($estados as $k => $state){ ?>
+                                        <option value="<?= $k ?>" <?= isset($tax->region) && strtoupper($k) == strtoupper($tax->region) ? "selected" : ""; ?> ><?= $state . " - " . $k ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -54,8 +61,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Criado</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Estado(UF)</th>
                             <th scope="col" colspan="2"></th>
                         </tr>
                     </thead>
@@ -69,15 +76,15 @@
                             <tr>
                                 <th scope="row"><?= $value->id ?></th>
                                 <td><?= $value->name ?></td>
-                                <td><?= $value->active ? "<i class='fas fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>" ?></td>
-                                <td><?= date_hours_br($value->created_at) ?></td>
+                                <td><?= $value->rate ?></td>
+                                <td><?= $value->region ?></td>
                                 <td>
-                                    <a href="<?= CONF_URL_BASE . "/category/edit/{$value->id}" ?>" class="btn btn-success btn-icon-split">
+                                    <a href="<?= CONF_URL_BASE . "/tax/edit/{$value->id}" ?>" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-pen"></i>
                                         </span>
                                     </a>
-                                    <a href="<?= CONF_URL_BASE . "/category/delete/{$value->id}" ?>" class="btn btn-danger btn-icon-split">
+                                    <a href="<?= CONF_URL_BASE . "/tax/delete/{$value->id}" ?>" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

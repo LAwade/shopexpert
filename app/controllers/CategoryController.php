@@ -34,7 +34,7 @@ class CategoryController extends Controller
             $info['all'] = Category::all();
             $info['category'] = $category;
         } catch (PDOException $p) {
-            logger("database")->error($p->getMessage());
+            logger("database_category")->error($p->getMessage());
             $this->message()->danger("Não foi possível realizar a ação!")->flash();
         } catch (Exception $e) {
             $this->message()->danger($e->getMessage())->flash();
@@ -81,7 +81,7 @@ class CategoryController extends Controller
 
             $info['all'] = Category::all();
         } catch (PDOException $p) {
-            logger("database")->error($p->getMessage());
+            logger("database_category")->error($p->getMessage());
             $this->message()->danger("Não foi possível realizar a ação!")->flash();
         } catch (Exception $e) {
             $this->message()->danger($e->getMessage())->flash();
@@ -103,7 +103,7 @@ class CategoryController extends Controller
             }
             $this->message()->success("Categoria foi removida!")->flash();
         } catch (PDOException $p) {
-            logger("database")->error($p->getMessage());
+            logger("database_category")->error($p->getMessage());
             $this->message()->danger("Não foi possível realizar a ação!")->flash();
         } catch (Exception $e) {
             $this->message()->danger($e->getMessage())->flash();

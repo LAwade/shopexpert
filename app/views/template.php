@@ -40,23 +40,30 @@
                             <div class="sb-sidenav-menu-heading">Cadastros</div>
                             <a class="nav-link" href="<?= CONF_URL_BASE . '/category/index' ?>">
                                 <div class="sb-nav-link-icon">
-                                    <i class="fa fa-cogs"></i>
+                                    <i class="fa fa-tag"></i>
                                 </div>
                                 Categorias
                             </a>
 
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= CONF_URL_BASE . '/tax/index' ?>">
                                 <div class="sb-nav-link-icon">
-                                    <i class="fa fa-cogs"></i>
+                                    <i class="fas fa-percentage"></i>
                                 </div>
-                                Taxas
+                                Taxas/Impostos
                             </a>
 
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= CONF_URL_BASE . '/product/index' ?>">
                                 <div class="sb-nav-link-icon">
-                                    <i class="fa fa-cogs"></i>
+                                    <i class="fas fa-shopping-cart"></i>
                                 </div>
                                 Produtos
+                            </a>
+
+                            <a class="nav-link" href="<?= CONF_URL_BASE . '/producttax/index' ?>">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-receipt"></i>
+                                </div>
+                                Taxas de Produto
                             </a>
                         <?php } else { ?>
                             <div class="sb-sidenav-menu-heading">Produtos</div>
@@ -69,7 +76,7 @@
                 </div>
                 <?php if (session()->data(CONF_SESSION_LOGIN)) { ?>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div><?= session()->data(CONF_SESSION_LOGIN)->name ?>
+                        <div class="small">Logado com:</div><?= session()->data(CONF_SESSION_LOGIN)->name ?>
                     </div>
                 <?php } else { ?>
                     <div class="sb-sidenav-footer">
