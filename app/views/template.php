@@ -59,11 +59,11 @@
                                 Produtos
                             </a>
 
-                            <a class="nav-link" href="<?= CONF_URL_BASE . '/producttax/index' ?>">
+                            <a class="nav-link" href="<?= CONF_URL_BASE . '/categorytax/index' ?>">
                                 <div class="sb-nav-link-icon">
                                     <i class="fas fa-receipt"></i>
                                 </div>
-                                Taxas de Produto
+                                Taxas de Categorias
                             </a>
                         <?php } else { ?>
                             <div class="sb-sidenav-menu-heading">Produtos</div>

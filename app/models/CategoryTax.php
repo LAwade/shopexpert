@@ -4,8 +4,8 @@ namespace app\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductTax extends Model
+class CategoryTax extends Model
 {
-    protected $table = "product_taxes";
+    protected $table = "category_taxes";
     public $timestamps = false;
 }

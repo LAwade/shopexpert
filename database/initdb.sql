@@ -34,17 +34,17 @@ CREATE TABLE taxes (
     region VARCHAR(255)
 );
 
-CREATE TABLE product_taxes (
+CREATE TABLE category_taxes (
     id SERIAL PRIMARY KEY NOT NULL,
-    product_id INT NOT NULL,
+    category_id INT NOT NULL,
     tax_id INT NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT(NOW())
 );
 
-ALTER TABLE product_taxes ADD CONSTRAINT product_id FOREIGN KEY (product_id)
-REFERENCES products(id) ON DELETE CASCADE;
+ALTER TABLE category_taxes ADD CONSTRAINT category_id FOREIGN KEY (category_id)
+REFERENCES categories(id) ON DELETE CASCADE;
 
-ALTER TABLE product_taxes ADD CONSTRAINT tax_id FOREIGN KEY (tax_id)
+ALTER TABLE category_taxes ADD CONSTRAINT tax_id FOREIGN KEY (tax_id)
 REFERENCES taxes(id) ON DELETE CASCADE;
 
 CREATE TABLE sales (
