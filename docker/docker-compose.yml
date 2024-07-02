@@ -23,7 +23,7 @@ services:
     container_name: shop_expert
     working_dir: /var/www/html/shopexpert
     ports:
-      - 8081:80
+      - 8181:80
     privileged: true
     environment:
       - DB_HOST=postgres

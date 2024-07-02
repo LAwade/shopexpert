@@ -29,14 +29,11 @@ WORKDIR /var/www/html
 RUN git clone https://github.com/LAwade/shopexpert.git
 
 WORKDIR /var/www/html/shopexpert
-RUN mkdir storage
-RUN mkdir storage/logs
+
+RUN composer install
 
 EXPOSE 80
 
 ENTRYPOINT [ "php" ]
 
 CMD ["-S", "0.0.0.0:80", "-t", "/var/www/html/shopexpert"]
-
-## docker build -t shopexpert .
-## docker run -it -d --name shopexpert -p 8081:80 shopexpert
