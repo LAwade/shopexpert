@@ -81,6 +81,14 @@
                                 </div>
                                 Taxas de Categorias
                             </a>
+
+                            <div class="sb-sidenav-menu-heading">RELATÓRIOS</div>
+                            <a class="nav-link" href="<?= CONF_URL_BASE . '/sale/saled' ?>">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                Vendas
+                            </a>
                         <?php } else { ?>
                             <div class="sb-sidenav-menu-heading">Produtos</div>
                             <a class="nav-link" href="<?= CONF_URL_BASE . '/shop/show' ?>">

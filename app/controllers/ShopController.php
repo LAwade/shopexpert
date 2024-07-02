@@ -31,20 +31,21 @@ class ShopController extends Controller
     public function show(int $id = null)
     {
         try {
-            $info['categories'] = Category::where('active', 1)->orderBy('id')->get();
-
-            if ($id) {
-                $products = Product::where('active', 1)->where('category_id', $id)->orderBy('name')->get();
-                foreach ($products as $product) {
-                    $taxes = Tax::join('category_taxes', 'category_taxes.tax_id', '=', 'taxes.id')
-                        ->where('category_taxes.category_id', $id)
-                        ->get();
-    
-                    $product->taxes = $taxes;
-                }   
-                $product->taxes = $taxes;
-                $info['products'] = $products;
+            if (!$id) {
+                $id = Category::min('id');
             }
+
+            $info['categories'] = Category::where('active', 1)->orderBy('id')->get();
+            $products = Product::where('active', 1)->where('category_id', $id)->orderBy('name')->get();
+            foreach ($products as $product) {
+                $taxes = Tax::join('category_taxes', 'category_taxes.tax_id', '=', 'taxes.id')
+                    ->where('category_taxes.category_id', $id)
+                    ->get();
+
+                $product->taxes = $taxes;
+            }
+            $product->taxes = $taxes;
+            $info['products'] = $products;
         } catch (PDOException $p) {
             logger("database_shop")->error($p->getMessage());
             $this->message()->danger("Não foi possível realizar a ação!")->flash();
@@ -102,7 +103,7 @@ class ShopController extends Controller
 
                 $product->taxes = $taxes;
                 $product->quantity = $count;
-            }   
+            }
 
             $info['products'] = $data;
         } catch (PDOException $p) {
@@ -119,19 +120,19 @@ class ShopController extends Controller
     public function sale()
     {
         $cart = session()->data("my_cart");
-        try{
+        try {
             DB::beginTransaction();
             $sale = new Sale();
-            if(!$sale->save()){
+            if (!$sale->save()) {
                 throw new Exception('Não foi possível registrar a compra!');
             }
 
             $productsCart = $cart->getProduct();
-            foreach($productsCart as $product){
+            foreach ($productsCart as $product) {
                 $product_sale = new ProductSale();
                 $product_sale->product_id = $product;
                 $product_sale->sale_id = $sale->id;
-                if(!$product_sale->save()){
+                if (!$product_sale->save()) {
                     throw new Exception('Não foi possível registrar os itens da compra!');
                 }
             }

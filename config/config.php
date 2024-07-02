@@ -45,6 +45,7 @@ define('CONF_LOGGER_ATIVE', true);
 define('CONF_LOGGER_PATH', __DIR__ . "/../logger/");
 define('CONF_LOGGER_MODEL', 'model');
 define('CONF_LOGGER_CONTROLLER', 'controller');
+define('CONF_LOGGER_SYSTEM', 'system');
 
 /*
  * TEAMPLATE 

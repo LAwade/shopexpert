@@ -11,7 +11,7 @@
         <?php } ?>
     </div>
 
-    <?php if (isset($products)) { ?>
+    <?php if (isset($products) && count($products)) { ?>
         <form method="POST" action="<?= url("shop/addcart/{$selected}") ?>">
             <div class="row py-3 text-center">
                 <?php foreach ($products as $product) { ?>
@@ -39,6 +39,14 @@
                 <?php } ?>
             </div>
         </form>
+    <?php } else { ?>
+        <div class="row py-5 text-center">
+            <div class="col-sm-12 mb-3 mb-sm-0">
+                <div class="mb-4">
+                    <h4>Não foi cadastrado nenhum item nessa sessão!</h4>
+                </div>
+            </div>
+        </div>
     <?php } ?>
 
     <div class="form-group row">
