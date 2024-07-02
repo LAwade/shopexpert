@@ -5,7 +5,7 @@ networks:
 services:
   postgres:
     build: postgres
-    container_name: postgresql
+    container_name: postgresql15
     restart: always
     environment:
       - POSTGRES_USER=shopexpert
@@ -20,7 +20,7 @@ services:
   aplicativo:
     build: shopexpert
     restart: always
-    container_name: shopexpert
+    container_name: shop_expert
     working_dir: /var/www/html/shopexpert
     ports:
       - 8081:80
