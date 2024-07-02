@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\models\Category;
 use app\models\Tax;
 use Exception;
 use PDOException;

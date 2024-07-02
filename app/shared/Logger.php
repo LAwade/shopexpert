@@ -120,6 +120,7 @@ class Logger {
     ########################################################################
 
     public function config($name, $exten = ".log", $prefix = null) {
+        $contents = null;
         if (file_exists($this->file)) {
             $contents = file_get_contents($this->file);
         }

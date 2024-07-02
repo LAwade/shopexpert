@@ -13,7 +13,9 @@ abstract class Controller {
 
     public function view($page, $data = array()) {
         $view = $this->view;
-        extract($data);
+        if($data){
+            extract($data);
+        }
         include CONF_DIR_TEMPLATE . $page . CONF_EXTESAO_TEMPLATE;
     }
 

@@ -8,12 +8,13 @@ use app\core\Controller;
 class IndexController extends Controller
 {
 
-    function __construct()
-    {
+    public function index(){
+        redirect('shop/show');
     }
 
-    public function index($hash = null)
+    public function login()
     {
+        session()->destroy();
         $data = is_postback();
 
         if ($data && $data['password'] && $data['email']) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 
 <head>
     <?php include __DIR__ . '/header.php'; ?>
@@ -9,11 +9,10 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="<?= CONF_URL_BASE ?>/"><?= CONF_NAME_SYSTEM ?></a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-        <!-- Navbar Search-->
         <div class="input-group">
-            <div class="input-group-append"></div>
+            <div class="input-group-append ">
+            </div>
         </div>
-        <!-- Navbar-->
         <?php if (session()->data(CONF_SESSION_LOGIN)) { ?>
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
@@ -23,6 +22,23 @@
                     </div>
                 </li>
             </ul>
+        <?php } else { ?>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <div class="col-4">
+                    <a class="btn btn-outline-light" href="<?= url('/shop/cart'); ?>">
+                        <i class="fas fa-shopping-cart"></i> <span class="badge badge-light">
+                            <?php
+                            if (session()->has('my_cart')) {
+                                echo count(session()->data('my_cart')->getProduct());
+                            } else {
+                                echo "0";
+                            }
+                            ?>
+                        </span>
+                    </a>
+                    <a href="<?= CONF_URL_BASE . '/index/login' ?>" class="btn btn-light">Acessar</a>
+                </div>
+            </div>
         <?php } ?>
     </nav>
 
@@ -68,7 +84,7 @@
                         <?php } else { ?>
                             <div class="sb-sidenav-menu-heading">Produtos</div>
                             <a class="nav-link" href="<?= CONF_URL_BASE . '/shop/show' ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-cart"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                                 Shoppping
                             </a>
                         <?php } ?>

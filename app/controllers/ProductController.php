@@ -14,6 +14,7 @@ class ProductController extends Controller {
 
     private $categories;
     private $products;
+    
     function __construct()
     {
         if (!session()->data(CONF_SESSION_LOGIN)) {

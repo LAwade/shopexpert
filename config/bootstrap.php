@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
 
 $capsule = new Capsule;
 
@@ -16,8 +18,10 @@ $capsule->addConnection([
     'prefix' => '',
 ]);
 
-// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setEventDispatcher(new Dispatcher(new Container));
+
+// Torne o Capsule disponível globalmente
 $capsule->setAsGlobal();
 
-// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+// Inicialize o Eloquent ORM
 $capsule->bootEloquent();

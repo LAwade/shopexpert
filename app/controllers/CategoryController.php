@@ -4,9 +4,9 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\models\Category;
+use Valitron\Validator;
 use Exception;
 use PDOException;
-use Valitron\Validator;
 
 class CategoryController extends Controller
 {

@@ -28,12 +28,14 @@ class CategorytaxController extends Controller
 
     public function store()
     {
-
         $input = is_postback();
         try {
             if (isset($input['add'])) {
-                $exist = CategoryTax::where('category_id', $input['category_id'])->get();
-                if($exist){
+                $exist = CategoryTax::where('category_id', $input['category_id'])
+                    ->where('tax_id', $input['tax_id_add'])
+                    ->get();
+
+                if(count($exist)){
                     throw new Exception('Esse imposto já foi adicionado ao produto!');
                 }
 
