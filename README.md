@@ -13,7 +13,8 @@ Senha Padrão: 123456
 - Docker Compose (Rápida):
     - Baixe a pasta '/docker' do nosso repositório com os arquivos de backup e Dockerfile.
     - Instale o docker e docker-compose em seu ambiente de desenvolvimento.
-    - Execute o comandos >_ docker-compose up -d
+    - Execute o comandos 
+        > docker-compose up -d
     - Abra seu navegador na e acesse localhost:8181
     - Pronto você está com ShopExpert funcionando!
 - Básica:
@@ -21,13 +22,15 @@ Senha Padrão: 123456
     - Armazene em um servidor com Apache ou PHP 7.4 instalados.
     - Caso precise crie uma pasta dentro do projeto com nome storage e dentro logs (storage/logs).
     - Rode os scripts de banco de dados em seu DB recomendamos o Postgres ou você pode usar o backup em /docker/postgres/dump_data.sql.
-        >_ psql -d shopexpert -f dump_data.sql (É necessário possuir um usuário root no seu Banco de dados)
-    - Execute a instalações de dependencias >_'composer install'.
-    - Na pasta do projeto execute >_ php -S 0.0.0.0:8080 -t /var/www/html/shopexpert 
+        > psql -d shopexpert -f dump_data.sql (É necessário possuir um usuário root no seu Banco de dados)
+    - Execute a instalações de dependencias 
+        > composer install
+    - Na pasta do projeto execute:
+        > php -S 0.0.0.0:8080 -t /var/www/html/shopexpert 
 - Docker:
-    - docker build -t shopexpert .
-    - docker run -it -d --name shopexpert -p 8080:80 shopexpert
-    - docker run -it -d --name postgres -p 5432:5432 postgres
+    > docker build -t shopexpert .
+    > docker run -it -d --name shopexpert -p 8080:80 shopexpert
+    > docker run -it -d --name postgres -p 5432:5432 postgres
     - Configure as informações de acesso ao banco de dados no arquivo config/config.php
 
 # Sobre
@@ -36,6 +39,6 @@ Senha Padrão: 123456
 - Validação com Valitron para melhorar os dados a serem armazenados no banco de dados.
 - Sistema de login implementado.
 - Painel Elegante.
-- Icones do FontAwasome.
+- Icones do FontAwesome.
 - Recuperação de Senhas.
 - Validação de registros de erros em logs.
