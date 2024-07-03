@@ -3,9 +3,9 @@ networks:
   working:
     driver: bridge
 services:
-  postgres:
+  postgres13:
     build: postgres
-    container_name: postgresql15
+    container_name: postgres13
     restart: always
     environment:
       - POSTGRES_USER=shopexpert
@@ -26,8 +26,11 @@ services:
       - 8181:80
     privileged: true
     environment:
-      - DB_HOST=postgres
+      - DB_HOST=postgres13
       - DB_PORT=5433
+      - DB_BASE=shopexpert
+      - DB_USER=shopexpert
+      - DB_PASSWD=shopexpert
     depends_on:
       - postgres
     networks:
