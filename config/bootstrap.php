@@ -25,3 +25,9 @@ $capsule->setAsGlobal();
 
 // Inicialize o Eloquent ORM
 $capsule->bootEloquent();
+
+try {
+    $capsule->getConnection()->getPdo();
+} catch (PDOException $e) {
+    logger('logs')->error($e->getMessage());
+}

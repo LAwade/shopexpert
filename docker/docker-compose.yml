@@ -4,7 +4,7 @@ networks:
     driver: bridge
 services:
   postgres13:
-    build: postgres
+    build: postgres13
     container_name: postgres13
     restart: always
     environment:
@@ -32,11 +32,11 @@ services:
       - DB_USER=shopexpert
       - DB_PASSWD=shopexpert
     depends_on:
-      - postgres
+      - postgres13
     networks:
       - working
     links:
-      - postgres
+      - postgres13
 volumes:
   storage:
   db:
