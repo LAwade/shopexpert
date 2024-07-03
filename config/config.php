@@ -107,11 +107,11 @@ define('CONF_MAILING_TEMP_RECUPERAR', __DIR__ . '/../public/mailing/recoveraccou
  *  DATA BASE
  */
 define('CONF_DB_DRIVER', 'pgsql');
-define('CONF_DB_HOST', '192.168.18.54');
-define('CONF_DB_PORT', '5432');
-define('CONF_DB_BASE', 'shopexpert');
-define('CONF_DB_USER', 'shopexpert');
-define('CONF_DB_PASSWD', 'shopexpert');
+define('CONF_DB_HOST', getenv('DB_HOST') ?? '127.0.0.1');
+define('CONF_DB_PORT', getenv('DB_PORT') ?? '5432');
+define('CONF_DB_BASE', getenv('DB_BASE') ?? 'shopexpert');
+define('CONF_DB_USER', getenv('DB_USER') ?? 'shopexpert');
+define('CONF_DB_PASSWD', getenv('DB_PASSWD') ?? 'shopexpert');
 define('CONF_DB_OPTIONS', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
