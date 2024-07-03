@@ -2,8 +2,8 @@ FROM debian
 
 LABEL maintainer 'Lucas Awade'
 
-RUN apt update 
-RUN apt -install lsb-release wget vim git apt-transport-https ca-certificates software-properties-common -y
+RUN apt update -y
+RUN apt install lsb-release wget vim git apt-transport-https ca-certificates software-properties-common -y
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg 
 RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
