@@ -1,19 +1,11 @@
-FROM debian
+FROM php:7.4-cli
 
-LABEL maintainer 'Lucas Awade'
+LABEL maintainer 'Lucas Awade' 
 
-RUN apt update -y
-RUN apt install lsb-release wget vim git apt-transport-https ca-certificates software-properties-common -y
+RUN apt-get update && apt-get install -y curl unzip vim git
 
-RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg 
-RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-RUN apt -y update
-
-RUN apt install -y php php8.2-cli php8.2-common php8.2-dev php8.2-gd php8.2-mbstring php8.2-common php8.2-pgsql php8.2-curl
-
-RUN curl -s https://getcomposer.org/installer | php
+RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
-RUN alias composer='/usr/local/bin/composer'
 
 WORKDIR /var/www/html
 RUN git clone https://github.com/LAwade/shopexpert.git
