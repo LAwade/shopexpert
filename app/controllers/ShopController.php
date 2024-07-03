@@ -20,6 +20,7 @@ class ShopController extends Controller
 
     public function __construct()
     {
+        session();
         $this->cartproduct = new Cart();
     }
 
@@ -31,6 +32,7 @@ class ShopController extends Controller
     public function show(int $id = null)
     {
         try {
+     
             if (!$id) {
                 $id = Category::min('id');
             }

@@ -11,9 +11,7 @@ class IndexController extends Controller
 {
 
     public function index(){
-        if (!session()->data(CONF_SESSION_LOGIN)) {
-            redirect('shop/show');
-        }
+        redirect('shop/show');
     }
 
     public function login()
