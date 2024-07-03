@@ -3,6 +3,11 @@
 Esse é um simples aplicativo para apresentação de uma plataforma de vendas de produtos, onde você poderá adicionar fácilmente atributos para seu comercio.
 Ele já vem com um sistema de Taxas/Impostos que facilita a criação de impostos sobre produto. Além de que cada imposto ou taxa pode ser incluido em diferentes tipos de produto.
 
+# Acesso
+
+Login do Administrador: admin@admin.com
+Senha Padrão: 123456
+
 # Instalações
 
 - Docker Compose (Rápida):
