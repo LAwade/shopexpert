@@ -15,7 +15,7 @@ class TaxController extends Controller {
     function __construct()
     {
         if (!session()->data(CONF_SESSION_LOGIN)) {
-            redirect('login');
+            redirect('index/login');
         }
         $this->states = [
             "AC" => "Acre", "AL" => "Alagoas", "AP" => "Amapá", "AM" => "Amazonas",

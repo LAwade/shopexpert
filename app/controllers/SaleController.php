@@ -16,7 +16,7 @@ class SaleController extends Controller
     public function __construct()
     {
         if (!session()->data(CONF_SESSION_LOGIN)) {
-            redirect('login');
+            redirect('index/login');
         }
     }
 

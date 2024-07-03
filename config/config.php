@@ -14,7 +14,7 @@ define('CONF_ACCOUNT_ADMINISTRATOR', 'admin');
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 define('CONF_URL_SITE', $protocol . $_SERVER['HTTP_HOST']);
 define('CONF_URL_BASE', $protocol . $_SERVER['HTTP_HOST']);
-define('CONF_URL_INDEX', 'panel/index');
+define('CONF_URL_INDEX', 'index/index');
 
 /*
  * SESSION

@@ -47,12 +47,13 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Produtos</div>
+                        <a class="nav-link" href="<?= CONF_URL_BASE . '/shop/show' ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                            Shoppping
+                        </a>
+                        
                         <?php if (session()->data(CONF_SESSION_LOGIN)) { ?>
-                            <div class="sb-sidenav-menu-heading">Main</div>
-                            <a class="nav-link" href="<?= CONF_URL_BASE . '/home/index' ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
                             <div class="sb-sidenav-menu-heading">Cadastros</div>
                             <a class="nav-link" href="<?= CONF_URL_BASE . '/category/index' ?>">
                                 <div class="sb-nav-link-icon">
@@ -88,12 +89,6 @@
                                     <i class="fas fa-file-invoice-dollar"></i>
                                 </div>
                                 Vendas
-                            </a>
-                        <?php } else { ?>
-                            <div class="sb-sidenav-menu-heading">Produtos</div>
-                            <a class="nav-link" href="<?= CONF_URL_BASE . '/shop/show' ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                                Shoppping
                             </a>
                         <?php } ?>
                     </div>

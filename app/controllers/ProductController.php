@@ -18,7 +18,7 @@ class ProductController extends Controller {
     function __construct()
     {
         if (!session()->data(CONF_SESSION_LOGIN)) {
-            redirect('login');
+            redirect('index/login');
         }
         $this->categories = Category::where('active', 1)->get();
         $this->products = Product::join('categories', 'products.category_id', '=', 'categories.id')

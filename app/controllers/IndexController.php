@@ -11,14 +11,14 @@ class IndexController extends Controller
 {
 
     public function index(){
-        redirect('shop/show');
+        if (!session()->data(CONF_SESSION_LOGIN)) {
+            redirect('shop/show');
+        }
     }
 
     public function login()
     {
-        session()->destroy();
         $data = is_postback();
-
         try{
             if ($data && $data['password'] && $data['email']) {
                 $user = User::findByMail($data['email']);
@@ -36,7 +36,7 @@ class IndexController extends Controller
             }
     
             if (session()->has(CONF_SESSION_LOGIN)) {
-                redirect('shop/show');
+                redirect('shop/index');
             }
         } catch (PDOException $p) {
             logger("database_login")->error($p->getMessage());
