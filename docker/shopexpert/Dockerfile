@@ -2,7 +2,10 @@ FROM php:7.4-cli
 
 LABEL maintainer 'Lucas Awade' 
 
-RUN apt-get update && apt-get install -y curl unzip vim git
+RUN apt-get update && apt-get install -y curl unzip vim git libpq-dev
+
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
+RUN docker-php-ext-install pdo pdo_pgsql
 
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
