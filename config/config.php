@@ -11,8 +11,9 @@ define('CONF_ACCOUNT_ADMINISTRATOR', 'admin');
  * URL
  * Info: add slash the final URL in (CONF_URL_SITE, CONF_URL_BASE)
  */
-define('CONF_URL_SITE', "localhost:8081");
-define('CONF_URL_BASE', "http://localhost:8081");
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+define('CONF_URL_SITE', $protocol . $_SERVER['HTTP_HOST']);
+define('CONF_URL_BASE', $protocol . $_SERVER['HTTP_HOST']);
 define('CONF_URL_INDEX', 'panel/index');
 
 /*
