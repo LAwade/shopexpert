@@ -15,7 +15,7 @@ Senha Padrão: 123456
     - Instale o docker e docker-compose em seu ambiente de desenvolvimento.
     - Execute o comandos 
         > docker-compose up -d
-    - Abra seu navegador na e acesse localhost:8181
+    - Abra seu navegador no navegador e acesse localhost:8181
     - Pronto você está com ShopExpert funcionando!
 - Básica:
     - Baixe em nosso repositório o pacote com os códigos.
@@ -29,8 +29,11 @@ Senha Padrão: 123456
         > php -S 0.0.0.0:8080 -t /var/www/html/shopexpert 
 - Docker:
     > docker build -t shopexpert .
+    
     > docker run -it -d --name shopexpert -p 8080:80 shopexpert
+    
     > docker run -it -d --name postgres -p 5432:5432 postgres
+    
     - Configure as informações de acesso ao banco de dados no arquivo config/config.php
 
 # Sobre
